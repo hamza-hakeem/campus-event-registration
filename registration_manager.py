@@ -33,12 +33,15 @@ class RegistrationManager:
         for student in self.registrations:
             student.display()
 
-    def search_registration(self, reg_number):
+      def search_registration(self, reg_number):
         for student in self.registrations:
             if student.registration_number == reg_number:
-                print("\nRegistration Found:")
-                student.display()
+                print("\nRegistration Found!")
+                print("Name:", student.name)
+                print("Registration Number:", student.registration_number)
+                print("Workshop:", student.workshop)
                 return student
 
-        print("Error: Registration not found.")
+        print("Registration not found.")
         return None
+
