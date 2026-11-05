@@ -6,42 +6,50 @@ class RegistrationManager:
         self.registrations = []
 
     def register_student(self, name, reg_number, workshop):
-        # Validate empty fields
         if not name.strip() or not reg_number.strip() or not workshop.strip():
             print("Error: All fields are required.")
-            return False
+            return
 
-        # Prevent duplicate registration numbers
         for student in self.registrations:
             if student.registration_number == reg_number:
-                print("Error: Registration number already exists.")
-                return False
+                print("Error: Duplicate registration number.")
+                return
 
-        # Create and save registration
         student = Registration(name, reg_number, workshop)
         self.registrations.append(student)
 
         print("Registration successful!")
-        return True
 
     def list_registrations(self):
         if not self.registrations:
             print("No registrations found.")
             return
 
-        print("\n--- Registered Participants ---")
         for student in self.registrations:
-            student.display()
+            print("Name:", student.name)
+            print("Registration Number:", student.registration_number)
+            print("Workshop:", student.workshop)
+            print("--------------------")
 
-      def search_registration(self, reg_number):
-        for student in self.registrations:
-            if student.registration_number == reg_number:
-                print("\nRegistration Found!")
-                print("Name:", student.name)
-                print("Registration Number:", student.registration_number)
-                print("Workshop:", student.workshop)
-                return student
+            def search_registration(self, reg_number):
+                for student in self.registrations:
+                 if student.registration_number == reg_number:
+                     print("Registration Found!")
+                     print("Name:", student.name)
+                     print("Registration Number:", student.registration_number)
+                     print("Workshop:", student.workshop)
+                     return
 
-        print("Registration not found.")
-        return None
+            print("Registration not found.")
 
+            def search_registration(self, reg_number):
+                for student in self.registrations:
+                    if student.registration_number == reg_number:
+                        print("Registration Found!")
+                        print("Name:", student.name)
+                        print("Registration Number:", student.registration_number)
+                        print("Workshop:", student.workshop)
+                        return student
+
+                print("Registration not found.")
+                return None

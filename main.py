@@ -1,39 +1,28 @@
 from registration_manager import RegistrationManager
 
+manager = RegistrationManager()
 
-def main():
-    manager = RegistrationManager()
+while True:
+    print("\nCampus Event Registration System")
+    print("1. Register Student")
+    print("2. Display Registrations")
+    print("3. Exit")
 
-    while True:
-        print("\n===== Campus Event Registration =====")
-        print("1. Register Student")
-        print("2. List Registrations")
-        print("3. Search Registration")
-        print("4. Exit")
+    choice = input("Enter your choice: ")
 
-        choice = input("Enter your choice: ")
+    if choice == "1":
+        name = input("Enter student name: ")
+        reg_number = input("Enter registration number: ")
+        workshop = input("Enter workshop name: ")
 
-        if choice == "1":
-            name = input("Enter student name: ")
-            reg_number = input("Enter registration number: ")
-            workshop = input("Enter workshop name: ")
+        manager.register_student(name, reg_number, workshop)
 
-            manager.register_student(name, reg_number, workshop)
+    elif choice == "2":
+        manager.list_registrations()
 
-        elif choice == "2":
-            manager.list_registrations()
+    elif choice == "3":
+        print("Goodbye!")
+        break
 
-        elif choice == "3":
-            reg_number = input("Enter registration number to search: ")
-            manager.search_registration(reg_number)
-
-        elif choice == "4":
-            print("Thank you for using the system.")
-            break
-
-        else:
-            print("Invalid choice. Please try again.")
-
-
-if __name__ == "__main__":
-    main()
+    else:
+        print("Invalid choice.")
